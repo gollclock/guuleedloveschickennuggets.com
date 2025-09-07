@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Guuleed Loves Chicken Nuggets</title>
   <style>
     :root {
@@ -36,13 +36,35 @@
       margin: 20px 0;
       border-radius: 8px;
     }
-    form {
-      margin-top: 30px;
+
+    /* Overlay styles */
+    #captcha-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: #fff;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   </style>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script>
+    function onCaptchaSuccess() {
+      document.getElementById('captcha-overlay').style.display = 'none';
+    }
+  </script>
 </head>
 <body>
+  <!-- CAPTCHA Overlay -->
+  <div id="captcha-overlay">
+    <div class="g-recaptcha" data-sitekey="6LcqWcErAAAAAIATd0dRf5O9_ZNP7xInKfdgyV28" data-callback="onCaptchaSuccess"></div>
+  </div>
+
+  <!-- Hidden Content -->
   <header>
     <h1>Bread Pizza Recipe</h1>
   </header>
@@ -55,17 +77,9 @@
       <li>Air fry at 200°C for 5 minutes.</li>
       <li>Enjoy your crispy, cheesy treat!</li>
     </ol>
-
-    <!-- CAPTCHA Widget -->
-    <form action="submit.php" method="POST">
-      <h3>Prove You're Human!</h3>
-      <div class="g-recaptcha" data-sitekey="6LcqWcErAAAAAIATd0dRf5O9_ZNP7xInKfdgyV28"></div><br>
-      <input type="submit" value="Submit">
-    </form>
   </div>
   <footer>
     <p>© 2025 guuleedloveschickennuggets.com</p>
   </footer>
 </body>
 </html>
-
